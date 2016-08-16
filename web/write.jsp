@@ -16,30 +16,26 @@
 function writeCheck()
 {
     var form = document.writeform;
-    if( !form.title.value )
-    {
-        alert( "제목이 뭐죠" );
+    if( !form.title.value ) {
+        alert( "제목을 입력하세요" );
         form.title.focus();
         return;
     }
 
-    if( !form.name.value )
-    {
-        alert( "이름!!" );
+    if( !form.name.value ) {
+        alert( "이름을 입력하세요" );
         form.name.focus();
         return;
     }
 
-    if( !form.password.value )
-    {
-        alert( "비번!!" );
+    if( !form.password.value ) {
+        alert( "비밀번호를 입력하세요" );
         form.password.focus();
         return;
     }
 
-    if( !form.memo.value )
-    {
-        alert( "...?" );
+    if( !form.memo.value ) {
+        alert( "내용을 입력하세요" );
         form.memo.focus();
         return;
     }
@@ -53,7 +49,6 @@ function writeCheck()
         <td>
             <table width="100%" cellpadding="0" cellspacing="0" border="0">
                     <td align="center">글쓰기</td>
-                </tr>
             </table>
             <table>
                 <tr>
@@ -92,9 +87,9 @@ function writeCheck()
                     <td>&nbsp;</td>
                 </tr>
             </table>
-    </form>
-    </td>
+        </td>
     </tr>
+        </form>
 </table>
 </body>
 </html>

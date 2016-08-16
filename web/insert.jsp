@@ -9,7 +9,7 @@
 <%@ page import="java.sql.*"%>
 <html>
 <head>
-    <title>Title</title>
+    <title>yunaboard</title>
 </head>
 <body>
 <script language=javascript>
@@ -17,40 +17,36 @@
     location.href="list.jsp";
 </script>
 <%
-    request.setCharacterEncoding("euc-kr"); //받아오는 값들을 한글로 인코딩합니다.
+    request.setCharacterEncoding("utf-8"); //받아오는 값들을 한글로 인코딩합니다.
 
     Class.forName("com.mysql.jdbc.Driver");
 
-    String url = "jdbc:mysql://localhost:3306/jdbctest";
-    String id = "root";
-    String pass = "0726";
-
-
-    String name = request.getParameter("name"); //write.jsp에서 name에 입력한 데이터값
-    String pw = request.getParameter("password");//write.jsp에서 password에 입력한 데이터값
     String title = request.getParameter("title"); //write.jsp에서 title에 입력한 데이터값
+    String name = request.getParameter("name"); //write.jsp에서 name에 입력한 데이터값
+    String password = request.getParameter("password");//write.jsp에서 password에 입력한 데이터값
     String memo = request.getParameter("memo"); //write.jsp에서 memo에 입력한 데이터값
 
     try {
-        Connection conn = DriverManager.getConnection(url,id,pass);
+        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbctest","root","0726");
         if (conn == null) {
             System.out.println("실패");
         } else {
             System.out.println("성공");
         }
 
-        String sql = "INSERT INTO board  VALUES('"+title +"','" +name+"','"+ pw+"','" +memo+"');";
+        String sql = "INSERT INTO board2 (title, name, password, memo) VALUES('"+title +"','" +name+"','"+ password+"','" +memo+"');";
         PreparedStatement ps = conn.prepareStatement(sql);
 
 //        ps.setString(1, title);
 //        ps.setString(2, name);
-//        ps.setString(3, pw);
+//        ps.setString(3, password);
 //        ps.setString(4, memo);
+//        System.out.print(ps.getParameterMetaData().getParameterType(1));
         ps.executeUpdate();
         ps.close();
         conn.close();
     } catch(SQLException e) {
-        out.println( e.toString() );
+        out.println( "ㅠㅠ" );
     }
 
 %>
